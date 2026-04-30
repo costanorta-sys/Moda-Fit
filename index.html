@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>MODA FIT · Gym Style & Accesorios</title>
-    <!-- Fuente Poppins moderna -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -20,14 +19,12 @@
             min-height: 100vh;
         }
 
-        /* Contenedor principal responsive */
         .app-container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 20px 24px;
         }
 
-        /* Header adaptable */
         .main-header {
             display: flex;
             justify-content: space-between;
@@ -46,7 +43,6 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.5px;
         }
         .logo .subtitle {
             color: #e67e22;
@@ -54,31 +50,26 @@
             font-size: clamp(0.7rem, 3vw, 0.85rem);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 4px;
         }
         .logo .tagline {
             color: #1e2a3a;
             font-weight: 500;
             font-size: clamp(0.8rem, 3.5vw, 0.95rem);
-            margin-top: 4px;
         }
         .logo .tagline i {
             color: #e67e22;
-            margin-right: 4px;
         }
-        .cart-icon {
+        .cart-icon-header {
             background: white;
             padding: 10px 18px;
             border-radius: 60px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 10px;
-            transition: 0.2s;
             border: 1px solid #eee;
         }
-        .cart-icon i {
+        .cart-icon-header i {
             font-size: 1.3rem;
             color: #e67e22;
         }
@@ -91,7 +82,48 @@
             font-weight: bold;
         }
 
-        /* Grid productos - responsive */
+        /* Botón flotante del carrito (siempre visible) */
+        .floating-cart-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #e67e22;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 1000;
+            transition: 0.3s ease;
+            border: none;
+        }
+        .floating-cart-btn:hover {
+            transform: scale(1.08);
+            background: #1e2a3a;
+        }
+        .floating-cart-btn i {
+            font-size: 1.8rem;
+        }
+        .floating-cart-btn .cart-count-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #1e2a3a;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
         .productos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -101,7 +133,7 @@
             background: white;
             border-radius: 28px;
             overflow: hidden;
-            transition: all 0.25s ease;
+            transition: 0.25s;
             box-shadow: 0 6px 14px rgba(0,0,0,0.02);
             border: 1px solid rgba(0,0,0,0.05);
             display: flex;
@@ -112,10 +144,9 @@
             transform: translateY(-6px);
             box-shadow: 0 20px 35px rgba(0,0,0,0.08);
         }
-        /* Contenedor de imagen con altura dinámica */
         .product-img-container {
             width: 100%;
-            aspect-ratio: 4 / 3; /* Relación de aspecto consistente en todos los dispositivos */
+            aspect-ratio: 4 / 3;
             overflow: hidden;
             background: #f0f2f5;
             cursor: pointer;
@@ -177,7 +208,6 @@
             border-radius: 40px;
             border: 1px solid #ddd;
             text-align: center;
-            font-size: 0.9rem;
         }
         .btn-add {
             background: #1e2a3a;
@@ -189,13 +219,12 @@
             cursor: pointer;
             flex: 1;
             transition: 0.2s;
-            font-size: 0.9rem;
         }
         .btn-add:hover {
             background: #e67e22;
         }
 
-        /* Lightbox (modal imagen completa) */
+        /* Lightbox */
         .lightbox {
             display: none;
             position: fixed;
@@ -214,7 +243,6 @@
             max-height: 85%;
             object-fit: contain;
             border-radius: 16px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
         .lightbox .close-lightbox {
             position: absolute;
@@ -222,9 +250,6 @@
             right: 25px;
             color: white;
             font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
             background: rgba(0,0,0,0.5);
             width: 44px;
             height: 44px;
@@ -232,13 +257,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .lightbox .close-lightbox:hover {
-            background: #e67e22;
-            color: white;
+            cursor: pointer;
         }
 
-        /* Modal carrito - responsive */
+        /* Carrito modal (sin cambios) */
         .cart-modal {
             display: none;
             position: fixed;
@@ -267,13 +289,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 18px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eee;
             flex-wrap: wrap;
             gap: 10px;
-        }
-        .cart-header h2 {
-            font-size: 1.4rem;
         }
         .cart-item {
             display: flex;
@@ -302,7 +319,6 @@
             height: 32px;
             border-radius: 30px;
             cursor: pointer;
-            font-size: 1.1rem;
         }
         .cart-total {
             text-align: right;
@@ -322,10 +338,9 @@
             color: white;
             border: none;
             cursor: pointer;
-            font-size: 1rem;
         }
 
-        /* Panel Admin - responsive */
+        /* Admin panel (sin cambios relevantes) */
         .admin-container {
             max-width: 1300px;
             margin: 20px auto;
@@ -345,15 +360,13 @@
             font-weight: 600;
             display: block;
             margin-bottom: 6px;
-            font-size: 0.9rem;
         }
-        input, textarea {
+        input, textarea, select {
             width: 100%;
             padding: 10px 16px;
             border-radius: 30px;
             border: 1px solid #ddd;
             font-family: 'Poppins', sans-serif;
-            font-size: 0.95rem;
         }
         button {
             background: #1e2a3a;
@@ -364,8 +377,6 @@
             font-weight: 600;
             cursor: pointer;
             transition: 0.2s;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
         }
         button:hover {
             background: #e67e22;
@@ -386,6 +397,21 @@
             border-radius: 16px;
             object-fit: cover;
         }
+        .estado-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .estado-activo {
+            background: #d4edda;
+            color: #155724;
+        }
+        .estado-inactivo {
+            background: #f8d7da;
+            color: #721c24;
+        }
         .toast-msg {
             position: fixed;
             bottom: 20px;
@@ -397,11 +423,10 @@
             border-radius: 60px;
             z-index: 2000;
             animation: fadeOut 2.5s forwards;
-            white-space: nowrap;
+            text-align: center;
             font-size: 0.85rem;
             max-width: 90%;
             white-space: normal;
-            text-align: center;
         }
         @keyframes fadeOut {
             0% { opacity: 1; transform: translateX(-50%) translateY(0);}
@@ -424,55 +449,12 @@
             background: #1e2a3a;
             color: white;
         }
-
-        /* Ajustes específicos para móviles */
         @media (max-width: 640px) {
-            .app-container {
-                padding: 16px;
-            }
-            .main-header {
-                margin-bottom: 24px;
-            }
-            .productos-grid {
-                gap: 18px;
-                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            }
-            .product-info {
-                padding: 14px;
-            }
-            .product-title {
-                font-size: 1.1rem;
-            }
-            .product-price {
-                font-size: 1.3rem;
-            }
-            .add-to-cart {
-                flex-wrap: wrap;
-            }
-            .quantity-input {
-                width: 60px;
-            }
-            .btn-add {
-                padding: 8px 12px;
-                font-size: 0.85rem;
-            }
-            .cart-modal-content {
-                padding: 16px;
-            }
-            .cart-header h2 {
-                font-size: 1.2rem;
-            }
-            .cart-item {
-                gap: 10px;
-            }
-        }
-
-        /* Ajustes para tablets */
-        @media (min-width: 641px) and (max-width: 1024px) {
-            .productos-grid {
-                gap: 24px;
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
+            .app-container { padding: 16px; }
+            .productos-grid { gap: 18px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+            .product-info { padding: 14px; }
+            .floating-cart-btn { width: 50px; height: 50px; bottom: 20px; right: 20px; }
+            .floating-cart-btn i { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -481,28 +463,32 @@
     <div id="publicShop" class="app-container">
         <div class="main-header">
             <div class="logo">
-                <h1><i class="fas fa-bolt" style="color:#e67e22; margin-right: 6px;"></i> MODA FIT</h1>
+                <h1><i class="fas fa-bolt" style="color:#e67e22;"></i> MODA FIT</h1>
                 <p class="subtitle">🔥 Performance · Style · Attitude</p>
                 <p class="tagline"><i class="fas fa-bolt"></i> Impulsa tu estilo</p>
             </div>
-            <div class="cart-icon" id="cartIcon">
+            <div class="cart-icon-header" id="cartIconHeader">
                 <i class="fas fa-shopping-bag"></i>
-                <span class="cart-count" id="cartCount">0</span>
+                <span class="cart-count" id="cartCountHeader">0</span>
             </div>
         </div>
         <div id="productosGrid" class="productos-grid"></div>
-        <footer>
-            <i class="fas fa-dumbbell"></i> MODA FIT · Entrena con actitud
-        </footer>
+        <footer><i class="fas fa-dumbbell"></i> MODA FIT · Entrena con actitud</footer>
     </div>
 
-    <!-- Lightbox para imagen completa -->
+    <!-- Botón flotante del carrito -->
+    <div id="floatingCartBtn" class="floating-cart-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="floatingCartBadge" class="cart-count-badge">0</span>
+    </div>
+
+    <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
         <span class="close-lightbox">&times;</span>
         <img id="lightbox-img" src="" alt="Vista ampliada">
     </div>
 
-    <!-- MODAL CARRITO -->
+    <!-- Modal carrito -->
     <div id="cartModal" class="cart-modal">
         <div class="cart-modal-content">
             <div class="cart-header">
@@ -538,6 +524,13 @@
                     <div class="form-group"><label>Precio (USD)</label><input type="number" step="0.01" id="prodPrice"></div>
                     <div class="form-group"><label>Descripción</label><textarea id="prodDescription" rows="2"></textarea></div>
                     <div class="form-group"><label>Imagen</label><input type="file" id="prodImage" accept="image/*"><div id="imagePreview"></div></div>
+                    <div class="form-group">
+                        <label>Estado del producto</label>
+                        <select id="prodEstado">
+                            <option value="activo">Activo (visible en tienda)</option>
+                            <option value="inactivo">Inactivo (oculto)</option>
+                        </select>
+                    </div>
                     <button id="saveProductBtn">Guardar producto</button>
                     <button id="cancelEditBtn" class="btn-outline" style="margin-left: 10px;">Cancelar</button>
                 </div>
@@ -551,14 +544,14 @@
                     <button id="saveConfigBtn">Guardar número</button>
                     <hr style="margin: 25px 0;">
                     <h3><i class="fas fa-cloud-upload-alt"></i> Sincronización con GitHub (JSON)</h3>
-                    <p>Exporta tus productos y configuración a un archivo <strong>modafit_data.json</strong>. Súbelo a tu repositorio de GitHub. La tienda cargará automáticamente los datos desde ese archivo al iniciar.</p>
+                    <p>Exporta tus productos y configuración a un archivo <strong>modafit_data.json</strong>.</p>
                     <div class="form-group">
-                        <label>URL del JSON remoto (por defecto "./modafit_data.json")</label>
+                        <label>URL del JSON remoto</label>
                         <input type="text" id="remoteJsonUrl" placeholder="./modafit_data.json">
                     </div>
-                    <button id="fetchRemoteDataBtn"><i class="fas fa-download"></i> Probar y cargar desde JSON remoto</button>
-                    <button id="exportDataBtn" style="background:#27ae60; margin-top: 15px;"><i class="fas fa-file-export"></i> Exportar datos a JSON (descargar)</button>
-                    <button id="importDataBtn" style="background:#8e44ad;"><i class="fas fa-file-import"></i> Importar datos desde archivo JSON</button>
+                    <button id="fetchRemoteDataBtn"><i class="fas fa-download"></i> Cargar desde JSON remoto</button>
+                    <button id="exportDataBtn" style="background:#27ae60; margin-top: 15px;"><i class="fas fa-file-export"></i> Exportar datos a JSON</button>
+                    <button id="importDataBtn" style="background:#8e44ad;"><i class="fas fa-file-import"></i> Importar desde JSON</button>
                     <input type="file" id="importFileInput" accept=".json" style="display: none;">
                 </div>
                 <div class="admin-card">
@@ -571,7 +564,7 @@
     </div>
 
     <script>
-        // ---------- STORAGE KEYS ----------
+        // STORAGE KEYS
         const STORAGE_PRODUCTS = 'modafit_productos';
         const STORAGE_CONFIG = 'modafit_config';
         const STORAGE_ADMIN_PASS = 'modafit_admin_pass';
@@ -584,18 +577,19 @@
         let cart = [];
         let remoteJsonUrl = "./modafit_data.json";
 
-        // DOM
+        // DOM elements
         const publicShopDiv = document.getElementById('publicShop');
         const adminPanelRoot = document.getElementById('adminPanelRoot');
         const productosGrid = document.getElementById('productosGrid');
-        const cartIcon = document.getElementById('cartIcon');
+        const cartIconHeader = document.getElementById('cartIconHeader');
+        const cartCountHeader = document.getElementById('cartCountHeader');
+        const floatingCartBtn = document.getElementById('floatingCartBtn');
+        const floatingCartBadge = document.getElementById('floatingCartBadge');
         const cartModal = document.getElementById('cartModal');
         const cartItemsList = document.getElementById('cartItemsList');
         const cartTotalSpan = document.getElementById('cartTotal');
-        const cartCountSpan = document.getElementById('cartCount');
         const closeCartBtn = document.getElementById('closeCartBtn');
         const checkoutBtn = document.getElementById('checkoutWhatsappBtn');
-        // Lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const closeLightbox = document.querySelector('.close-lightbox');
@@ -611,6 +605,7 @@
         const prodDescription = document.getElementById('prodDescription');
         const prodImage = document.getElementById('prodImage');
         const imagePreview = document.getElementById('imagePreview');
+        const prodEstado = document.getElementById('prodEstado');
         const saveProductBtn = document.getElementById('saveProductBtn');
         const cancelEditBtn = document.getElementById('cancelEditBtn');
         const editId = document.getElementById('editId');
@@ -634,7 +629,11 @@
             setTimeout(() => toast.remove(), 2800);
         }
 
-        function saveProducts() { localStorage.setItem(STORAGE_PRODUCTS, JSON.stringify(productos)); renderProductos(); if (adminProductsList && adminDashboardDiv.style.display === 'block') renderAdminProductList(); }
+        function saveProducts() { 
+            localStorage.setItem(STORAGE_PRODUCTS, JSON.stringify(productos)); 
+            renderProductos(); 
+            if (adminProductsList && adminDashboardDiv.style.display === 'block') renderAdminProductList(); 
+        }
         function saveConfig() { localStorage.setItem(STORAGE_CONFIG, JSON.stringify(config)); }
         function saveCart() { localStorage.setItem(STORAGE_CART, JSON.stringify(cart)); updateCartUI(); }
         function saveRemoteUrl() { if(remoteJsonUrlInput) localStorage.setItem(STORAGE_REMOTE_URL, remoteJsonUrlInput.value); }
@@ -684,8 +683,8 @@
                 if (storedProducts) productos = JSON.parse(storedProducts);
                 else {
                     productos = [
-                        { id: 101, nombre: "Conjunto Deportivo Elite", precio: 59.99, descripcion: "Camiseta + short de compresión. Ideal para entrenamiento intenso.", imagenBase64: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232c3e66'/%3E%3Ctext x='50' y='55' font-size='12' fill='white' text-anchor='middle'%3E🔥CONJUNTO%3C/text%3E%3C/svg%3E" },
-                        { id: 102, nombre: "Top sin costuras + Leggings", precio: 74.99, descripcion: "Pack de dos piezas, tela respirável.", imagenBase64: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e67e22'/%3E%3Ctext x='50' y='55' font-size='12' fill='white' text-anchor='middle'%3ETOP%2BLEGGINGS%3C/text%3E%3C/svg%3E" }
+                        { id: 101, nombre: "Conjunto Deportivo Elite", precio: 59.99, descripcion: "Camiseta + short de compresión. Ideal para entrenamiento intenso.", activo: true, imagenBase64: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232c3e66'/%3E%3Ctext x='50' y='55' font-size='12' fill='white' text-anchor='middle'%3E🔥CONJUNTO%3C/text%3E%3C/svg%3E" },
+                        { id: 102, nombre: "Top sin costuras + Leggings", precio: 74.99, descripcion: "Pack de dos piezas, tela respirável.", activo: true, imagenBase64: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e67e22'/%3E%3Ctext x='50' y='55' font-size='12' fill='white' text-anchor='middle'%3ETOP%2BLEGGINGS%3C/text%3E%3C/svg%3E" }
                     ];
                     saveProducts();
                 }
@@ -696,12 +695,13 @@
 
         function renderProductos() {
             if (!productosGrid) return;
-            if (productos.length === 0) {
+            const productosActivos = productos.filter(p => p.activo === true);
+            if (productosActivos.length === 0) {
                 productosGrid.innerHTML = `<div style="text-align:center; padding:60px;">✨ Próximamente más productos. Visítanos pronto.</div>`;
                 return;
             }
             let html = '';
-            for (let prod of productos) {
+            for (let prod of productosActivos) {
                 const imgSrc = prod.imagenBase64 || 'https://placehold.co/600x400?text=MODA+FIT';
                 html += `
                     <div class="product-card">
@@ -722,7 +722,6 @@
                 `;
             }
             productosGrid.innerHTML = html;
-            // Eventos de agregar al carrito
             document.querySelectorAll('.btn-add').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     const id = parseInt(btn.dataset.id);
@@ -735,14 +734,10 @@
                     agregarAlCarrito(id, nombre, precio, img, cantidad);
                 });
             });
-            // Eventos de lightbox en las imágenes
             document.querySelectorAll('.product-img-container').forEach(container => {
                 container.addEventListener('click', (e) => {
                     const fullImg = container.getAttribute('data-fullimg');
-                    if (fullImg) {
-                        lightboxImg.src = fullImg;
-                        lightbox.style.display = 'flex';
-                    }
+                    if (fullImg) { lightboxImg.src = fullImg; lightbox.style.display = 'flex'; }
                 });
             });
         }
@@ -757,7 +752,9 @@
 
         function updateCartUI() {
             const totalItems = cart.reduce((sum, item) => sum + item.cantidad, 0);
-            if (cartCountSpan) cartCountSpan.innerText = totalItems;
+            // Actualizar contador en el header y en el botón flotante
+            if (cartCountHeader) cartCountHeader.innerText = totalItems;
+            if (floatingCartBadge) floatingCartBadge.innerText = totalItems;
             if (cartModal && cartModal.style.display === 'flex') renderCartModal();
         }
 
@@ -779,7 +776,7 @@
                         <div style="flex:2"><strong>${escapeHtml(item.nombre)}</strong><br>$${item.precio.toFixed(2)} c/u</div>
                         <div class="cart-qty-control">
                             <button class="cart-dec" data-idx="${idx}">-</button>
-                            <span style="min-width:35px; text-align:center;">${item.cantidad}</span>
+                            <span>${item.cantidad}</span>
                             <button class="cart-inc" data-idx="${idx}">+</button>
                             <button class="cart-remove" data-idx="${idx}" style="background:#e74c3c;">🗑️</button>
                         </div>
@@ -801,19 +798,18 @@
 
         function sendOrderWhatsApp() {
             if (cart.length === 0) { showMessage("Carrito vacío", true); return; }
-            let message = "🛍️ *PEDIDO MODA FIT* 🧘%0A";
+            let message = "🛍️ *PEDIDO MODA FIT*%0A";
             let total = 0;
             cart.forEach(item => {
                 const subtotal = item.precio * item.cantidad;
                 total += subtotal;
                 message += `▪️ ${item.cantidad} x ${item.nombre} = $${subtotal.toFixed(2)}%0A`;
             });
-            message += `%0A💰 *TOTAL: $${total.toFixed(2)}*%0A%0A✅ ¡Listo! Confirma envío.`;
-            const numero = config.whatsappNumber;
-            window.open(`https://wa.me/${numero}?text=${message}`, '_blank');
+            message += `%0A💰 *TOTAL: $${total.toFixed(2)}*%0A%0A✅ ¡Gracias!`;
+            window.open(`https://wa.me/${config.whatsappNumber}?text=${message}`, '_blank');
         }
 
-        // ADMIN ROUTES
+        // ADMIN FUNCTIONS
         function checkRoute() {
             if (window.location.hash === '#/admin' || window.location.pathname.includes('/admin')) {
                 publicShopDiv.style.display = 'none';
@@ -824,28 +820,175 @@
                 adminPanelRoot.style.display = 'none';
             }
         }
-        function checkAdminAuth() { const logged = sessionStorage.getItem('admin_auth'); if (logged === 'true') { adminLoginSection.style.display = 'none'; adminDashboardDiv.style.display = 'block'; renderAdminProductList(); } else { adminLoginSection.style.display = 'block'; adminDashboardDiv.style.display = 'none'; } }
-        function loginAdmin() { if (adminPasswordInput.value === adminPassword) { sessionStorage.setItem('admin_auth', 'true'); checkAdminAuth(); showMessage("Acceso autorizado"); } else showMessage("Contraseña incorrecta", true); }
-        function logoutAdmin() { sessionStorage.removeItem('admin_auth'); window.location.hash = ''; window.location.href = window.location.pathname; checkRoute(); }
-        function renderAdminProductList() { if (!adminProductsList) return; let html = ''; productos.forEach(prod => { html += `<div class="product-admin-row"><img class="product-admin-img" src="${prod.imagenBase64 || 'https://placehold.co/65x65'}"><div style="flex:2"><strong>${escapeHtml(prod.nombre)}</strong> - $${prod.precio.toFixed(2)}<br><small>${escapeHtml(prod.descripcion.substring(0,45))}</small></div><div><button class="admin-edit" data-id="${prod.id}" style="background:#f39c12;">Editar</button> <button class="admin-delete" data-id="${prod.id}" style="background:#e74c3c;">Eliminar</button></div></div>`; }); adminProductsList.innerHTML = html; document.querySelectorAll('.admin-edit').forEach(b => b.addEventListener('click', () => loadProductForEdit(parseInt(b.dataset.id)))); document.querySelectorAll('.admin-delete').forEach(b => b.addEventListener('click', () => { if(confirm("¿Eliminar?")) { productos = productos.filter(p => p.id != b.dataset.id); saveProducts(); renderAdminProductList(); showMessage("Eliminado"); } })); }
-        function loadProductForEdit(id) { const prod = productos.find(p => p.id === id); if(!prod) return; editId.value = prod.id; prodName.value = prod.nombre; prodPrice.value = prod.precio; prodDescription.value = prod.descripcion; if(prod.imagenBase64) imagePreview.innerHTML = `<img src="${prod.imagenBase64}" style="max-width:100px; border-radius:16px;"><button type="button" id="clearImgBtn" style="background:gray;">X</button>`; const clear = document.getElementById('clearImgBtn'); if(clear) clear.onclick = () => { prod.imagenBase64 = null; imagePreview.innerHTML = ''; showMessage("Imagen eliminada (guarda cambios)"); }; }
-        function saveProductAdmin() { const nombre = prodName.value.trim(), precio = parseFloat(prodPrice.value), desc = prodDescription.value.trim(); if(!nombre || isNaN(precio) || !desc) { showMessage("Completa todos los campos", true); return; } const file = prodImage.files[0]; const save = (b64) => { const idEditar = editId.value; if(idEditar) { const idx = productos.findIndex(p => p.id == idEditar); if(idx!==-1) { productos[idx].nombre = nombre; productos[idx].precio = precio; productos[idx].descripcion = desc; if(b64) productos[idx].imagenBase64 = b64; } } else { productos.push({ id: Date.now(), nombre, precio, descripcion: desc, imagenBase64: b64 || null }); } saveProducts(); resetAdminForm(); renderAdminProductList(); showMessage("Producto guardado"); }; if(file) { if(file.size>2*1024*1024) { showMessage("Imagen >2MB", true); return; } const reader = new FileReader(); reader.onload = e => save(e.target.result); reader.readAsDataURL(file); } else save(null); }
-        function resetAdminForm() { editId.value = ''; prodName.value = ''; prodPrice.value = ''; prodDescription.value = ''; prodImage.value = ''; imagePreview.innerHTML = ''; }
-        function exportDataToJSON() { const exportData = { productos: productos, config: { whatsappNumber: config.whatsappNumber }, version: "1.0", lastExport: new Date().toISOString() }; const dataStr = JSON.stringify(exportData, null, 2); const blob = new Blob([dataStr], {type: "application/json"}); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = "modafit_data.json"; a.click(); URL.revokeObjectURL(url); showMessage("📁 Archivo modafit_data.json exportado. Súbelo a tu GitHub."); }
-        function importFromJSON(file) { const reader = new FileReader(); reader.onload = e => { try { const imported = JSON.parse(e.target.result); if(imported.productos && Array.isArray(imported.productos)) { productos = imported.productos; saveProducts(); renderAdminProductList(); renderProductos(); if(imported.config && imported.config.whatsappNumber) { config.whatsappNumber = imported.config.whatsappNumber; saveConfig(); if(whatsappNumberConfig) whatsappNumberConfig.value = config.whatsappNumber; } showMessage("Importación exitosa"); } else throw new Error(); } catch(err) { showMessage("JSON inválido", true); } }; reader.readAsText(file); }
+        function checkAdminAuth() { 
+            const logged = sessionStorage.getItem('admin_auth'); 
+            if (logged === 'true') { 
+                adminLoginSection.style.display = 'none'; 
+                adminDashboardDiv.style.display = 'block'; 
+                renderAdminProductList(); 
+            } else { 
+                adminLoginSection.style.display = 'block'; 
+                adminDashboardDiv.style.display = 'none'; 
+            } 
+        }
+        function loginAdmin() { 
+            if (adminPasswordInput.value === adminPassword) { 
+                sessionStorage.setItem('admin_auth', 'true'); 
+                checkAdminAuth(); 
+                showMessage("Acceso autorizado"); 
+            } else showMessage("Contraseña incorrecta", true); 
+        }
+        function logoutAdmin() { 
+            sessionStorage.removeItem('admin_auth'); 
+            window.location.hash = ''; 
+            window.location.href = window.location.pathname; 
+            checkRoute(); 
+        }
+
+        function renderAdminProductList() {
+            if (!adminProductsList) return;
+            let html = '';
+            productos.forEach(prod => {
+                const estadoTexto = prod.activo ? 'Activo' : 'Inactivo';
+                const estadoClase = prod.activo ? 'estado-activo' : 'estado-inactivo';
+                html += `
+                    <div class="product-admin-row">
+                        <img class="product-admin-img" src="${prod.imagenBase64 || 'https://placehold.co/65x65'}">
+                        <div style="flex:2">
+                            <strong>${escapeHtml(prod.nombre)}</strong> - $${prod.precio.toFixed(2)}<br>
+                            <span class="estado-badge ${estadoClase}">${estadoTexto}</span>
+                        </div>
+                        <div>
+                            <button class="admin-edit" data-id="${prod.id}" style="background:#f39c12;">Editar</button>
+                            <button class="admin-toggle-status" data-id="${prod.id}" style="background:${prod.activo ? '#dc3545' : '#28a745'};">${prod.activo ? 'Desactivar' : 'Activar'}</button>
+                            <button class="admin-delete" data-id="${prod.id}" style="background:#6c757d;">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+            });
+            adminProductsList.innerHTML = html;
+            document.querySelectorAll('.admin-edit').forEach(b => b.addEventListener('click', () => loadProductForEdit(parseInt(b.dataset.id))));
+            document.querySelectorAll('.admin-delete').forEach(b => b.addEventListener('click', () => { if(confirm("¿Eliminar permanentemente?")) { productos = productos.filter(p => p.id != b.dataset.id); saveProducts(); renderAdminProductList(); showMessage("Eliminado"); } }));
+            document.querySelectorAll('.admin-toggle-status').forEach(b => b.addEventListener('click', () => {
+                const id = parseInt(b.dataset.id);
+                const prod = productos.find(p => p.id === id);
+                if (prod) {
+                    prod.activo = !prod.activo;
+                    saveProducts();
+                    renderAdminProductList();
+                    showMessage(`Producto ${prod.activo ? 'activado' : 'desactivado'}`);
+                }
+            }));
+        }
+
+        function loadProductForEdit(id) {
+            const prod = productos.find(p => p.id === id);
+            if(!prod) return;
+            editId.value = prod.id;
+            prodName.value = prod.nombre;
+            prodPrice.value = prod.precio;
+            prodDescription.value = prod.descripcion;
+            prodEstado.value = prod.activo ? 'activo' : 'inactivo';
+            if(prod.imagenBase64) imagePreview.innerHTML = `<img src="${prod.imagenBase64}" style="max-width:100px; border-radius:16px;"><button type="button" id="clearImgBtn" style="background:gray;">X</button>`;
+            else imagePreview.innerHTML = '';
+            document.getElementById('clearImgBtn')?.addEventListener('click', () => { prod.imagenBase64 = null; imagePreview.innerHTML = ''; showMessage("Imagen eliminada (guarda cambios)"); });
+        }
+
+        function saveProductAdmin() {
+            const nombre = prodName.value.trim();
+            const precio = parseFloat(prodPrice.value);
+            const desc = prodDescription.value.trim();
+            const activo = prodEstado.value === 'activo';
+            if(!nombre || isNaN(precio) || !desc) { showMessage("Completa todos los campos", true); return; }
+            const file = prodImage.files[0];
+            const save = (b64) => {
+                const idEditar = editId.value;
+                if(idEditar) {
+                    const idx = productos.findIndex(p => p.id == idEditar);
+                    if(idx !== -1) {
+                        productos[idx].nombre = nombre;
+                        productos[idx].precio = precio;
+                        productos[idx].descripcion = desc;
+                        productos[idx].activo = activo;
+                        if(b64) productos[idx].imagenBase64 = b64;
+                    }
+                } else {
+                    productos.push({ id: Date.now(), nombre, precio, descripcion: desc, activo: activo, imagenBase64: b64 || null });
+                }
+                saveProducts();
+                resetAdminForm();
+                renderAdminProductList();
+                showMessage("Producto guardado");
+            };
+            if(file) {
+                if(file.size > 2*1024*1024) { showMessage("Imagen >2MB", true); return; }
+                const reader = new FileReader();
+                reader.onload = e => save(e.target.result);
+                reader.readAsDataURL(file);
+            } else save(null);
+        }
+
+        function resetAdminForm() {
+            editId.value = '';
+            prodName.value = '';
+            prodPrice.value = '';
+            prodDescription.value = '';
+            prodImage.value = '';
+            imagePreview.innerHTML = '';
+            prodEstado.value = 'activo';
+        }
+
+        function exportDataToJSON() {
+            const exportData = { productos, config: { whatsappNumber: config.whatsappNumber }, version: "1.1", lastExport: new Date().toISOString() };
+            const dataStr = JSON.stringify(exportData, null, 2);
+            const blob = new Blob([dataStr], {type: "application/json"});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "modafit_data.json";
+            a.click();
+            URL.revokeObjectURL(url);
+            showMessage("📁 Archivo JSON exportado con estados activo/inactivo");
+        }
+
+        function importFromJSON(file) {
+            const reader = new FileReader();
+            reader.onload = e => {
+                try {
+                    const imported = JSON.parse(e.target.result);
+                    if(imported.productos && Array.isArray(imported.productos)) {
+                        productos = imported.productos;
+                        saveProducts();
+                        renderAdminProductList();
+                        renderProductos();
+                        if(imported.config && imported.config.whatsappNumber) {
+                            config.whatsappNumber = imported.config.whatsappNumber;
+                            saveConfig();
+                            if(whatsappNumberConfig) whatsappNumberConfig.value = config.whatsappNumber;
+                        }
+                        showMessage("Importación exitosa");
+                    } else throw new Error();
+                } catch(err) { showMessage("JSON inválido", true); }
+            };
+            reader.readAsText(file);
+        }
+
         function saveWhatsappConfig() { config.whatsappNumber = whatsappNumberConfig.value.trim(); saveConfig(); showMessage("WhatsApp actualizado"); }
         function changeAdminPassword() { const newP = newAdminPass.value.trim(); if(newP.length<4) { showMessage("Mínimo 4 caracteres", true); return; } adminPassword = newP; localStorage.setItem(STORAGE_ADMIN_PASS, adminPassword); showMessage("Contraseña cambiada"); newAdminPass.value = ''; }
         function saveRemoteUrlSetting() { saveRemoteUrl(); showMessage("URL remota guardada"); fetchRemoteDataAndApply(true); }
 
-        // Eventos generales
-        cartIcon.addEventListener('click', () => { renderCartModal(); cartModal.style.display = 'flex'; });
+        // Event listeners: abrir carrito desde header o botón flotante
+        function openCart() {
+            renderCartModal();
+            cartModal.style.display = 'flex';
+        }
+        cartIconHeader.addEventListener('click', openCart);
+        floatingCartBtn.addEventListener('click', openCart);
         closeCartBtn.addEventListener('click', () => cartModal.style.display = 'none');
         checkoutBtn.addEventListener('click', sendOrderWhatsApp);
         window.addEventListener('click', (e) => { if(e.target === cartModal) cartModal.style.display = 'none'; });
-        // Lightbox events
-        closeLightbox.addEventListener('click', () => { lightbox.style.display = 'none'; });
+        closeLightbox.addEventListener('click', () => lightbox.style.display = 'none');
         lightbox.addEventListener('click', (e) => { if(e.target === lightbox) lightbox.style.display = 'none'; });
-        // Admin events
         adminLoginBtn.addEventListener('click', loginAdmin);
         exitAdminBtn.addEventListener('click', logoutAdmin);
         saveProductBtn.addEventListener('click', saveProductAdmin);
