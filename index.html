@@ -44,6 +44,7 @@
             background-clip: text;
             color: transparent;
         }
+
         .logo .subtitle {
             color: #e67e22;
             font-weight: 600;
@@ -51,14 +52,17 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
         .logo .tagline {
             color: #1e2a3a;
             font-weight: 500;
             font-size: clamp(0.8rem, 3.5vw, 0.95rem);
         }
+
         .logo .tagline i {
             color: #e67e22;
         }
+
         .cart-icon-header {
             background: white;
             padding: 10px 18px;
@@ -69,10 +73,12 @@
             gap: 10px;
             border: 1px solid #eee;
         }
+
         .cart-icon-header i {
             font-size: 1.3rem;
             color: #e67e22;
         }
+
         .cart-count {
             background: #e67e22;
             color: white;
@@ -82,7 +88,6 @@
             font-weight: bold;
         }
 
-        /* Botón flotante del carrito (siempre visible) */
         .floating-cart-btn {
             position: fixed;
             bottom: 25px;
@@ -101,13 +106,16 @@
             transition: 0.3s ease;
             border: none;
         }
+
         .floating-cart-btn:hover {
             transform: scale(1.08);
             background: #1e2a3a;
         }
+
         .floating-cart-btn i {
             font-size: 1.8rem;
         }
+
         .floating-cart-btn .cart-count-badge {
             position: absolute;
             top: -5px;
@@ -124,11 +132,64 @@
             font-weight: bold;
         }
 
+        /* Barra de categorías sticky */
+        .categorias-bar {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 99;
+            padding: 12px 0;
+            margin-bottom: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .categoria-btn {
+            background: #f0f2f5;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #1e2a3a;
+        }
+
+        .categoria-btn:hover {
+            background: #e67e22;
+            color: white;
+        }
+
+        .categoria-btn.activa {
+            background: #e67e22;
+            color: white;
+        }
+
+        @media (max-width: 640px) {
+            .categorias-bar {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                gap: 8px;
+                padding: 8px 0;
+            }
+            .categoria-btn {
+                white-space: nowrap;
+                padding: 6px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
         .productos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 24px;
         }
+
         .product-card {
             background: white;
             border-radius: 28px;
@@ -140,10 +201,12 @@
             flex-direction: column;
             height: 100%;
         }
+
         .product-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 20px 35px rgba(0,0,0,0.08);
         }
+
         .product-img-container {
             width: 100%;
             aspect-ratio: 4 / 3;
@@ -152,15 +215,18 @@
             cursor: pointer;
             position: relative;
         }
+
         .product-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
+
         .product-img-container:hover .product-img {
             transform: scale(1.03);
         }
+
         .zoom-icon {
             position: absolute;
             bottom: 10px;
@@ -173,35 +239,42 @@
             backdrop-filter: blur(4px);
             pointer-events: none;
         }
+
         .product-info {
             padding: 18px;
             flex: 1;
             display: flex;
             flex-direction: column;
         }
+
         .product-title {
             font-size: 1.2rem;
             font-weight: 700;
             color: #1e2a3a;
         }
+
         .product-price {
             font-size: 1.4rem;
             font-weight: 800;
             color: #e67e22;
             margin: 8px 0;
         }
+
         .product-desc {
             color: #5f6c7a;
             font-size: 0.85rem;
             margin-bottom: 16px;
             flex: 1;
         }
+
         .add-to-cart {
             display: flex;
             gap: 10px;
             align-items: center;
             margin-top: auto;
+            flex-wrap: wrap;
         }
+
         .quantity-input {
             width: 65px;
             padding: 8px;
@@ -209,6 +282,7 @@
             border: 1px solid #ddd;
             text-align: center;
         }
+
         .btn-add {
             background: #1e2a3a;
             color: white;
@@ -220,11 +294,29 @@
             flex: 1;
             transition: 0.2s;
         }
+
         .btn-add:hover {
             background: #e67e22;
         }
 
-        /* Lightbox */
+        .btn-share {
+            background: #1e2a3a;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-share:hover {
+            background: #e67e22;
+        }
+
         .lightbox {
             display: none;
             position: fixed;
@@ -238,12 +330,14 @@
             align-items: center;
             cursor: pointer;
         }
+
         .lightbox img {
             max-width: 90%;
             max-height: 85%;
             object-fit: contain;
             border-radius: 16px;
         }
+
         .lightbox .close-lightbox {
             position: absolute;
             top: 20px;
@@ -260,7 +354,6 @@
             cursor: pointer;
         }
 
-        /* Carrito modal (sin cambios) */
         .cart-modal {
             display: none;
             position: fixed;
@@ -275,6 +368,7 @@
             align-items: center;
             padding: 16px;
         }
+
         .cart-modal-content {
             background: white;
             width: 100%;
@@ -284,6 +378,7 @@
             max-height: 85vh;
             overflow-y: auto;
         }
+
         .cart-header {
             display: flex;
             justify-content: space-between;
@@ -292,6 +387,7 @@
             flex-wrap: wrap;
             gap: 10px;
         }
+
         .cart-item {
             display: flex;
             gap: 12px;
@@ -301,17 +397,20 @@
             border-bottom: 1px solid #f0f0f0;
             padding-bottom: 12px;
         }
+
         .cart-item-img {
             width: 55px;
             height: 55px;
             border-radius: 16px;
             object-fit: cover;
         }
+
         .cart-qty-control {
             display: flex;
             gap: 6px;
             align-items: center;
         }
+
         .cart-qty-control button {
             background: #eef2f5;
             border: none;
@@ -320,12 +419,14 @@
             border-radius: 30px;
             cursor: pointer;
         }
+
         .cart-total {
             text-align: right;
             font-size: 1.3rem;
             font-weight: 800;
             margin: 20px 0;
         }
+
         .btn-whatsapp-cart {
             background: #25D366;
             width: 100%;
@@ -340,12 +441,12 @@
             cursor: pointer;
         }
 
-        /* Admin panel (sin cambios relevantes) */
         .admin-container {
             max-width: 1300px;
             margin: 20px auto;
             padding: 16px;
         }
+
         .admin-card {
             background: white;
             border-radius: 28px;
@@ -353,14 +454,17 @@
             margin-bottom: 24px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.05);
         }
+
         .form-group {
             margin-bottom: 18px;
         }
+
         .form-group label {
             font-weight: 600;
             display: block;
             margin-bottom: 6px;
         }
+
         input, textarea, select {
             width: 100%;
             padding: 10px 16px;
@@ -368,6 +472,7 @@
             border: 1px solid #ddd;
             font-family: 'Poppins', sans-serif;
         }
+
         button {
             background: #1e2a3a;
             color: white;
@@ -378,9 +483,11 @@
             cursor: pointer;
             transition: 0.2s;
         }
+
         button:hover {
             background: #e67e22;
         }
+
         .product-admin-row {
             display: flex;
             align-items: center;
@@ -391,12 +498,14 @@
             border-radius: 20px;
             flex-wrap: wrap;
         }
+
         .product-admin-img {
             width: 50px;
             height: 50px;
             border-radius: 16px;
             object-fit: cover;
         }
+
         .estado-badge {
             display: inline-block;
             padding: 4px 12px;
@@ -404,14 +513,17 @@
             font-size: 0.7rem;
             font-weight: 600;
         }
+
         .estado-activo {
             background: #d4edda;
             color: #155724;
         }
+
         .estado-inactivo {
             background: #f8d7da;
             color: #721c24;
         }
+
         .toast-msg {
             position: fixed;
             bottom: 20px;
@@ -428,11 +540,13 @@
             max-width: 90%;
             white-space: normal;
         }
+
         @keyframes fadeOut {
-            0% { opacity: 1; transform: translateX(-50%) translateY(0);}
+            0% { opacity: 1; transform: translateX(-50%) translateY(0); }
             70% { opacity: 1; }
-            100% { opacity: 0; visibility: hidden; transform: translateX(-50%) translateY(20px);}
+            100% { opacity: 0; visibility: hidden; transform: translateX(-50%) translateY(20px); }
         }
+
         footer {
             text-align: center;
             margin-top: 50px;
@@ -440,21 +554,24 @@
             color: #7e8c9a;
             font-size: 0.75rem;
         }
+
         .btn-outline {
             background: transparent;
             border: 1px solid #1e2a3a;
             color: #1e2a3a;
         }
+
         .btn-outline:hover {
             background: #1e2a3a;
             color: white;
         }
+
         @media (max-width: 640px) {
             .app-container { padding: 16px; }
             .productos-grid { gap: 18px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
             .product-info { padding: 14px; }
             .floating-cart-btn { width: 50px; height: 50px; bottom: 20px; right: 20px; }
-            .floating-cart-btn i { font-size: 1.5rem; }
+            .btn-share { padding: 8px 10px; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -472,6 +589,12 @@
                 <span class="cart-count" id="cartCountHeader">0</span>
             </div>
         </div>
+
+        <!-- Barra de categorías sticky -->
+        <div id="categoriasBar" class="categorias-bar">
+            <button class="categoria-btn activa" data-cat="todas">📦 Todas</button>
+        </div>
+
         <div id="productosGrid" class="productos-grid"></div>
         <footer><i class="fas fa-dumbbell"></i> MODA FIT · Entrena con actitud</footer>
     </div>
@@ -517,6 +640,20 @@
                 <button id="adminLoginBtn">Ingresar</button>
             </div>
             <div id="adminDashboard" style="display: none;">
+                <!-- Gestión de categorías -->
+                <div class="admin-card">
+                    <h3><i class="fas fa-tags"></i> Gestionar Categorías</h3>
+                    <div class="form-group">
+                        <label>Nueva categoría</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="newCategoriaNombre" placeholder="Ej: Ropa, Accesorios, Cuidado Personal">
+                            <button id="addCategoriaBtn">Agregar</button>
+                        </div>
+                    </div>
+                    <div id="categoriasList" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;"></div>
+                </div>
+
+                <!-- Gestión de productos -->
                 <div class="admin-card">
                     <h3><i class="fas fa-boxes"></i> Gestionar productos</h3>
                     <input type="hidden" id="editId" value="">
@@ -531,29 +668,38 @@
                             <option value="inactivo">Inactivo (oculto)</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label>Categoría</label>
+                        <select id="prodCategoria">
+                            <option value="">Sin categoría</option>
+                        </select>
+                    </div>
                     <button id="saveProductBtn">Guardar producto</button>
                     <button id="cancelEditBtn" class="btn-outline" style="margin-left: 10px;">Cancelar</button>
                 </div>
+
                 <div class="admin-card">
                     <h3>📋 Lista de productos</h3>
                     <div id="adminProductsList"></div>
                 </div>
+
                 <div class="admin-card">
                     <h3><i class="fab fa-whatsapp"></i> WhatsApp para pedidos</h3>
                     <div class="form-group"><label>Número (código país sin +)</label><input type="tel" id="whatsappNumberConfig" placeholder="573001234567"></div>
                     <button id="saveConfigBtn">Guardar número</button>
                     <hr style="margin: 25px 0;">
                     <h3><i class="fas fa-cloud-upload-alt"></i> Sincronización con GitHub (JSON)</h3>
-                    <p>Exporta tus productos y configuración a un archivo <strong>modafit_data.json</strong>.</p>
+                    <p>La tienda carga automáticamente los productos desde <strong>modafit_data.json</strong> (ruta configurable). Si editas productos desde aquí, <strong>exporta el JSON</strong> y súbelo a tu repositorio para actualizar la tienda.</p>
                     <div class="form-group">
-                        <label>URL del JSON remoto</label>
+                        <label>URL del JSON remoto (por defecto "./modafit_data.json")</label>
                         <input type="text" id="remoteJsonUrl" placeholder="./modafit_data.json">
                     </div>
-                    <button id="fetchRemoteDataBtn"><i class="fas fa-download"></i> Cargar desde JSON remoto</button>
-                    <button id="exportDataBtn" style="background:#27ae60; margin-top: 15px;"><i class="fas fa-file-export"></i> Exportar datos a JSON</button>
-                    <button id="importDataBtn" style="background:#8e44ad;"><i class="fas fa-file-import"></i> Importar desde JSON</button>
+                    <button id="fetchRemoteDataBtn"><i class="fas fa-download"></i> Sincronizar manual desde JSON ahora</button>
+                    <button id="exportDataBtn" style="background:#27ae60; margin-top: 15px;"><i class="fas fa-file-export"></i> Exportar datos actuales a JSON (descargar)</button>
+                    <button id="importDataBtn" style="background:#8e44ad;"><i class="fas fa-file-import"></i> Importar desde archivo JSON local</button>
                     <input type="file" id="importFileInput" accept=".json" style="display: none;">
                 </div>
+
                 <div class="admin-card">
                     <h3>🔑 Cambiar contraseña del panel</h3>
                     <div class="form-group"><input type="password" id="newAdminPass" placeholder="Nueva contraseña"></div>
@@ -564,23 +710,27 @@
     </div>
 
     <script>
-        // STORAGE KEYS
+        // ==================== STORAGE KEYS ====================
         const STORAGE_PRODUCTS = 'modafit_productos';
         const STORAGE_CONFIG = 'modafit_config';
         const STORAGE_ADMIN_PASS = 'modafit_admin_pass';
         const STORAGE_CART = 'modafit_cart';
         const STORAGE_REMOTE_URL = 'modafit_remote_url';
+        const STORAGE_CATEGORIES = 'modafit_categorias';
 
         let productos = [];
+        let categorias = [];
         let config = { whatsappNumber: "573001234567" };
         let adminPassword = "admin123";
         let cart = [];
         let remoteJsonUrl = "./modafit_data.json";
+        let categoriaActiva = "todas";
 
-        // DOM elements
+        // ==================== DOM ELEMENTOS ====================
         const publicShopDiv = document.getElementById('publicShop');
         const adminPanelRoot = document.getElementById('adminPanelRoot');
         const productosGrid = document.getElementById('productosGrid');
+        const categoriasBar = document.getElementById('categoriasBar');
         const cartIconHeader = document.getElementById('cartIconHeader');
         const cartCountHeader = document.getElementById('cartCountHeader');
         const floatingCartBtn = document.getElementById('floatingCartBtn');
@@ -606,6 +756,7 @@
         const prodImage = document.getElementById('prodImage');
         const imagePreview = document.getElementById('imagePreview');
         const prodEstado = document.getElementById('prodEstado');
+        const prodCategoria = document.getElementById('prodCategoria');
         const saveProductBtn = document.getElementById('saveProductBtn');
         const cancelEditBtn = document.getElementById('cancelEditBtn');
         const editId = document.getElementById('editId');
@@ -619,7 +770,11 @@
         const importFileInput = document.getElementById('importFileInput');
         const remoteJsonUrlInput = document.getElementById('remoteJsonUrl');
         const fetchRemoteDataBtn = document.getElementById('fetchRemoteDataBtn');
+        const newCategoriaNombre = document.getElementById('newCategoriaNombre');
+        const addCategoriaBtn = document.getElementById('addCategoriaBtn');
+        const categoriasListDiv = document.getElementById('categoriasList');
 
+        // ==================== FUNCIONES COMUNES ====================
         function showMessage(msg, isError = false) {
             const toast = document.createElement('div');
             toast.className = 'toast-msg';
@@ -629,35 +784,23 @@
             setTimeout(() => toast.remove(), 2800);
         }
 
-        function saveProducts() { 
-            localStorage.setItem(STORAGE_PRODUCTS, JSON.stringify(productos)); 
-            renderProductos(); 
-            if (adminProductsList && adminDashboardDiv.style.display === 'block') renderAdminProductList(); 
-        }
-        function saveConfig() { localStorage.setItem(STORAGE_CONFIG, JSON.stringify(config)); }
-        function saveCart() { localStorage.setItem(STORAGE_CART, JSON.stringify(cart)); updateCartUI(); }
-        function saveRemoteUrl() { if(remoteJsonUrlInput) localStorage.setItem(STORAGE_REMOTE_URL, remoteJsonUrlInput.value); }
+        function saveProductsToLocal() { localStorage.setItem(STORAGE_PRODUCTS, JSON.stringify(productos)); }
+        function saveCategoriesToLocal() { localStorage.setItem(STORAGE_CATEGORIES, JSON.stringify(categorias)); }
+        function saveConfigToLocal() { localStorage.setItem(STORAGE_CONFIG, JSON.stringify(config)); }
+        function saveCartToLocal() { localStorage.setItem(STORAGE_CART, JSON.stringify(cart)); updateCartUI(); }
 
-        async function loadInitialData() {
-            const storedConfig = localStorage.getItem(STORAGE_CONFIG);
-            if (storedConfig) config = JSON.parse(storedConfig);
-            else saveConfig();
-            if (whatsappNumberConfig) whatsappNumberConfig.value = config.whatsappNumber;
-            const storedPass = localStorage.getItem(STORAGE_ADMIN_PASS);
-            if (storedPass) adminPassword = storedPass;
-            else localStorage.setItem(STORAGE_ADMIN_PASS, adminPassword);
-            const storedCart = localStorage.getItem(STORAGE_CART);
-            if (storedCart) cart = JSON.parse(storedCart);
-            else cart = [];
-            updateCartUI();
-
-            let savedRemoteUrl = localStorage.getItem(STORAGE_REMOTE_URL);
-            if (savedRemoteUrl) remoteJsonUrl = savedRemoteUrl;
-            if (remoteJsonUrlInput) remoteJsonUrlInput.value = remoteJsonUrl;
-            await fetchRemoteDataAndApply(false);
+        function persistAll() {
+            saveProductsToLocal();
+            saveCategoriesToLocal();
+            renderProductos();
+            if (adminProductsList && adminDashboardDiv.style.display === 'block') {
+                renderAdminProductList();
+                renderCategoriasAdmin();
+            }
+            actualizarFiltrosCategoria();
         }
 
-        async function fetchRemoteDataAndApply(showFeedback = true) {
+        async function loadProductsFromRemoteJson(showFeedback = true, updateLocalStorage = true) {
             let url = remoteJsonUrlInput ? remoteJsonUrlInput.value : remoteJsonUrl;
             if (!url) url = "./modafit_data.json";
             try {
@@ -666,42 +809,87 @@
                 const remoteData = await response.json();
                 if (remoteData.productos && Array.isArray(remoteData.productos)) {
                     productos = remoteData.productos;
-                    saveProducts();
+                    if (updateLocalStorage) saveProductsToLocal();
+                    if (remoteData.categorias && Array.isArray(remoteData.categorias)) {
+                        categorias = remoteData.categorias;
+                        if (updateLocalStorage) saveCategoriesToLocal();
+                    } else {
+                        const catsUnicas = [...new Set(productos.map(p => p.categoria).filter(c => c && c.trim() !== ""))];
+                        categorias = catsUnicas;
+                        if (updateLocalStorage) saveCategoriesToLocal();
+                    }
                     if (remoteData.config && remoteData.config.whatsappNumber) {
                         config.whatsappNumber = remoteData.config.whatsappNumber;
-                        saveConfig();
+                        if (updateLocalStorage) saveConfigToLocal();
                         if (whatsappNumberConfig) whatsappNumberConfig.value = config.whatsappNumber;
                     }
                     if (showFeedback) showMessage("✅ Datos sincronizados desde JSON remoto");
                     renderProductos();
-                    if (adminProductsList && adminDashboardDiv.style.display === 'block') renderAdminProductList();
+                    actualizarSelectCategorias();
+                    construirBarraCategorias();
+                    if (adminProductsList && adminDashboardDiv.style.display === 'block') {
+                        renderAdminProductList();
+                        renderCategoriasAdmin();
+                    }
                     return true;
                 } else throw new Error("Formato inválido");
             } catch (err) {
                 if (showFeedback) showMessage(`⚠️ No se pudo cargar JSON remoto. Usando datos locales.`, true);
                 const storedProducts = localStorage.getItem(STORAGE_PRODUCTS);
+                const storedCats = localStorage.getItem(STORAGE_CATEGORIES);
                 if (storedProducts) productos = JSON.parse(storedProducts);
                 else {
                     productos = [
-                        { id: 101, nombre: "Conjunto Deportivo Elite", precio: 59.99, descripcion: "Camiseta + short de compresión. Ideal para entrenamiento intenso.", activo: true, imagenBase64: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232c3e66'/%3E%3Ctext x='50' y='55' font-size='12' fill='white' text-anchor='middle'%3E🔥CONJUNTO%3C/text%3E%3C/svg%3E" },
-                        { id: 102, nombre: "Top sin costuras + Leggings", precio: 74.99, descripcion: "Pack de dos piezas, tela respirável.", activo: true, imagenBase64: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e67e22'/%3E%3Ctext x='50' y='55' font-size='12' fill='white' text-anchor='middle'%3ETOP%2BLEGGINGS%3C/text%3E%3C/svg%3E" }
+                        { id: 101, nombre: "Conjunto Deportivo Elite", precio: 59.99, descripcion: "Camiseta + short de compresión.", activo: true, categoria: "Ropa", imagenBase64: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232c3e66'/%3E%3Ctext x='50' y='55' font-size='12' fill='white' text-anchor='middle'%3E🔥CONJUNTO%3C/text%3E%3C/svg%3E" },
+                        { id: 102, nombre: "Top sin costuras + Leggings", precio: 74.99, descripcion: "Pack de dos piezas, tela respirável.", activo: true, categoria: "Ropa", imagenBase64: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e67e22'/%3E%3Ctext x='50' y='55' font-size='12' fill='white' text-anchor='middle'%3ETOP%2BLEGGINGS%3C/text%3E%3C/svg%3E" }
                     ];
-                    saveProducts();
+                    saveProductsToLocal();
+                }
+                if (storedCats) categorias = JSON.parse(storedCats);
+                else {
+                    categorias = ["Ropa"];
+                    saveCategoriesToLocal();
                 }
                 renderProductos();
+                actualizarSelectCategorias();
+                construirBarraCategorias();
+                if (adminProductsList && adminDashboardDiv.style.display === 'block') {
+                    renderAdminProductList();
+                    renderCategoriasAdmin();
+                }
                 return false;
+            }
+        }
+
+        function shareProduct(nombre, url) {
+            const shareText = `🔥 ¡Mira este producto de MODA FIT! 🔥\n\n✨ ${nombre}\n\n🛍️ ¡Cómpralo aquí! 👇\n${url}`;
+            if (navigator.share) {
+                navigator.share({ title: nombre, text: shareText, url: url }).catch((err) => {
+                    if (err.name !== 'AbortError') showMessage('Error al intentar compartir', true);
+                });
+            } else {
+                const textarea = document.createElement('textarea');
+                textarea.value = `${shareText}\n\nEnlace directo: ${url}`;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showMessage('✅ Mensaje copiado al portapapeles');
             }
         }
 
         function renderProductos() {
             if (!productosGrid) return;
-            const productosActivos = productos.filter(p => p.activo === true);
-            if (productosActivos.length === 0) {
-                productosGrid.innerHTML = `<div style="text-align:center; padding:60px;">✨ Próximamente más productos. Visítanos pronto.</div>`;
+            let productosFiltrados = productos.filter(p => p.activo === true);
+            if (categoriaActiva !== "todas") {
+                productosFiltrados = productosFiltrados.filter(p => p.categoria === categoriaActiva);
+            }
+            if (productosFiltrados.length === 0) {
+                productosGrid.innerHTML = `<div style="text-align:center; padding:60px;">✨ No hay productos en esta categoría.</div>`;
                 return;
             }
             let html = '';
-            for (let prod of productosActivos) {
+            for (let prod of productosFiltrados) {
                 const imgSrc = prod.imagenBase64 || 'https://placehold.co/600x400?text=MODA+FIT';
                 html += `
                     <div class="product-card">
@@ -713,9 +901,11 @@
                             <div class="product-title">${escapeHtml(prod.nombre)}</div>
                             <div class="product-price">$${prod.precio.toFixed(2)}</div>
                             <div class="product-desc">${escapeHtml(prod.descripcion.substring(0, 100))}</div>
+                            ${prod.categoria ? `<div style="font-size:0.7rem; color:#e67e22; margin-bottom:8px;"><i class="fas fa-tag"></i> ${escapeHtml(prod.categoria)}</div>` : ''}
                             <div class="add-to-cart">
                                 <input type="number" id="qty-${prod.id}" class="quantity-input" value="1" min="1" step="1">
                                 <button class="btn-add" data-id="${prod.id}" data-nombre="${escapeHtml(prod.nombre)}" data-precio="${prod.precio}" data-img="${imgSrc}">Agregar <i class="fas fa-cart-plus"></i></button>
+                                <button class="btn-share" data-nombre="${escapeHtml(prod.nombre)}" data-url="${window.location.href}"><i class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
@@ -734,6 +924,13 @@
                     agregarAlCarrito(id, nombre, precio, img, cantidad);
                 });
             });
+            document.querySelectorAll('.btn-share').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const nombre = btn.getAttribute('data-nombre');
+                    const url = btn.getAttribute('data-url');
+                    shareProduct(nombre, url);
+                });
+            });
             document.querySelectorAll('.product-img-container').forEach(container => {
                 container.addEventListener('click', (e) => {
                     const fullImg = container.getAttribute('data-fullimg');
@@ -742,17 +939,101 @@
             });
         }
 
+        function actualizarFiltrosCategoria() {
+            if (!categoriasBar) return;
+            const botones = categoriasBar.querySelectorAll('.categoria-btn');
+            botones.forEach(btn => {
+                const cat = btn.getAttribute('data-cat');
+                if (cat === categoriaActiva) btn.classList.add('activa');
+                else btn.classList.remove('activa');
+            });
+            renderProductos();
+        }
+
+        function construirBarraCategorias() {
+            if (!categoriasBar) return;
+            let html = `<button class="categoria-btn ${categoriaActiva === 'todas' ? 'activa' : ''}" data-cat="todas">📦 Todas</button>`;
+            categorias.forEach(cat => {
+                html += `<button class="categoria-btn ${categoriaActiva === cat ? 'activa' : ''}" data-cat="${escapeHtml(cat)}">🏷️ ${escapeHtml(cat)}</button>`;
+            });
+            categoriasBar.innerHTML = html;
+            document.querySelectorAll('.categoria-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoriaActiva = btn.getAttribute('data-cat');
+                    actualizarFiltrosCategoria();
+                    construirBarraCategorias();
+                });
+            });
+        }
+
+        function actualizarSelectCategorias() {
+            if (!prodCategoria) return;
+            let options = '<option value="">Sin categoría</option>';
+            categorias.forEach(cat => {
+                options += `<option value="${escapeHtml(cat)}">${escapeHtml(cat)}</option>`;
+            });
+            prodCategoria.innerHTML = options;
+        }
+
+        function renderCategoriasAdmin() {
+            if (!categoriasListDiv) return;
+            if (categorias.length === 0) {
+                categoriasListDiv.innerHTML = '<p>No hay categorías. Agrega una arriba.</p>';
+                return;
+            }
+            let html = '';
+            categorias.forEach((cat, idx) => {
+                html += `
+                    <div style="background:#f0f2f5; border-radius:30px; padding:6px 14px; display:inline-flex; align-items:center; gap:8px;">
+                        <span>${escapeHtml(cat)}</span>
+                        <button class="eliminar-categoria" data-cat="${escapeHtml(cat)}" style="background:#dc3545; padding:4px 10px; font-size:0.7rem;">✖</button>
+                    </div>
+                `;
+            });
+            categoriasListDiv.innerHTML = html;
+            document.querySelectorAll('.eliminar-categoria').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const catAEliminar = btn.getAttribute('data-cat');
+                    if (confirm(`¿Eliminar categoría "${catAEliminar}"? Los productos quedarán sin categoría.`)) {
+                        categorias = categorias.filter(c => c !== catAEliminar);
+                        productos.forEach(p => { if (p.categoria === catAEliminar) p.categoria = ""; });
+                        saveCategoriesToLocal();
+                        saveProductsToLocal();
+                        actualizarSelectCategorias();
+                        renderCategoriasAdmin();
+                        construirBarraCategorias();
+                        renderAdminProductList();
+                        renderProductos();
+                        showMessage(`Categoría "${catAEliminar}" eliminada`);
+                    }
+                });
+            });
+        }
+
+        function agregarCategoria() {
+            const nueva = newCategoriaNombre.value.trim();
+            if (!nueva) { showMessage("Escribe un nombre para la categoría", true); return; }
+            if (categorias.includes(nueva)) { showMessage("La categoría ya existe", true); return; }
+            categorias.push(nueva);
+            saveCategoriesToLocal();
+            actualizarSelectCategorias();
+            renderCategoriasAdmin();
+            construirBarraCategorias();
+            newCategoriaNombre.value = '';
+            showMessage(`Categoría "${nueva}" agregada`);
+        }
+
+        // ==================== CARRITO ====================
         function agregarAlCarrito(id, nombre, precio, imagen, cantidad) {
             const existing = cart.find(item => item.id === id);
             if (existing) existing.cantidad += cantidad;
             else cart.push({ id, nombre, precio, imagen, cantidad });
-            saveCart();
+            saveCartToLocal();
             showMessage(`➕ ${cantidad} x ${nombre} agregado`);
         }
 
         function updateCartUI() {
             const totalItems = cart.reduce((sum, item) => sum + item.cantidad, 0);
-            // Actualizar contador en el header y en el botón flotante
             if (cartCountHeader) cartCountHeader.innerText = totalItems;
             if (floatingCartBadge) floatingCartBadge.innerText = totalItems;
             if (cartModal && cartModal.style.display === 'flex') renderCartModal();
@@ -786,13 +1067,13 @@
             cartItemsList.innerHTML = itemsHtml;
             cartTotalSpan.innerHTML = `<strong>Total: $${total.toFixed(2)}</strong>`;
             document.querySelectorAll('.cart-dec').forEach(btn => {
-                btn.addEventListener('click', () => { const idx = parseInt(btn.dataset.idx); if (cart[idx].cantidad > 1) cart[idx].cantidad--; else cart.splice(idx,1); saveCart(); renderCartModal(); });
+                btn.addEventListener('click', () => { const idx = parseInt(btn.dataset.idx); if (cart[idx].cantidad > 1) cart[idx].cantidad--; else cart.splice(idx,1); saveCartToLocal(); renderCartModal(); });
             });
             document.querySelectorAll('.cart-inc').forEach(btn => {
-                btn.addEventListener('click', () => { const idx = parseInt(btn.dataset.idx); cart[idx].cantidad++; saveCart(); renderCartModal(); });
+                btn.addEventListener('click', () => { const idx = parseInt(btn.dataset.idx); cart[idx].cantidad++; saveCartToLocal(); renderCartModal(); });
             });
             document.querySelectorAll('.cart-remove').forEach(btn => {
-                btn.addEventListener('click', () => { const idx = parseInt(btn.dataset.idx); cart.splice(idx,1); saveCart(); renderCartModal(); });
+                btn.addEventListener('click', () => { const idx = parseInt(btn.dataset.idx); cart.splice(idx,1); saveCartToLocal(); renderCartModal(); });
             });
         }
 
@@ -809,7 +1090,7 @@
             window.open(`https://wa.me/${config.whatsappNumber}?text=${message}`, '_blank');
         }
 
-        // ADMIN FUNCTIONS
+        // ==================== ADMIN ====================
         function checkRoute() {
             if (window.location.hash === '#/admin' || window.location.pathname.includes('/admin')) {
                 publicShopDiv.style.display = 'none';
@@ -826,6 +1107,8 @@
                 adminLoginSection.style.display = 'none'; 
                 adminDashboardDiv.style.display = 'block'; 
                 renderAdminProductList(); 
+                renderCategoriasAdmin();
+                actualizarSelectCategorias();
             } else { 
                 adminLoginSection.style.display = 'block'; 
                 adminDashboardDiv.style.display = 'none'; 
@@ -844,7 +1127,6 @@
             window.location.href = window.location.pathname; 
             checkRoute(); 
         }
-
         function renderAdminProductList() {
             if (!adminProductsList) return;
             let html = '';
@@ -857,6 +1139,7 @@
                         <div style="flex:2">
                             <strong>${escapeHtml(prod.nombre)}</strong> - $${prod.precio.toFixed(2)}<br>
                             <span class="estado-badge ${estadoClase}">${estadoTexto}</span>
+                            ${prod.categoria ? `<span style="margin-left:8px; background:#e67e22; padding:2px 8px; border-radius:20px; font-size:0.7rem;">${escapeHtml(prod.categoria)}</span>` : ''}
                         </div>
                         <div>
                             <button class="admin-edit" data-id="${prod.id}" style="background:#f39c12;">Editar</button>
@@ -868,19 +1151,17 @@
             });
             adminProductsList.innerHTML = html;
             document.querySelectorAll('.admin-edit').forEach(b => b.addEventListener('click', () => loadProductForEdit(parseInt(b.dataset.id))));
-            document.querySelectorAll('.admin-delete').forEach(b => b.addEventListener('click', () => { if(confirm("¿Eliminar permanentemente?")) { productos = productos.filter(p => p.id != b.dataset.id); saveProducts(); renderAdminProductList(); showMessage("Eliminado"); } }));
+            document.querySelectorAll('.admin-delete').forEach(b => b.addEventListener('click', () => { if(confirm("¿Eliminar permanentemente?")) { productos = productos.filter(p => p.id != b.dataset.id); persistAll(); showMessage("Eliminado"); } }));
             document.querySelectorAll('.admin-toggle-status').forEach(b => b.addEventListener('click', () => {
                 const id = parseInt(b.dataset.id);
                 const prod = productos.find(p => p.id === id);
                 if (prod) {
                     prod.activo = !prod.activo;
-                    saveProducts();
-                    renderAdminProductList();
+                    persistAll();
                     showMessage(`Producto ${prod.activo ? 'activado' : 'desactivado'}`);
                 }
             }));
         }
-
         function loadProductForEdit(id) {
             const prod = productos.find(p => p.id === id);
             if(!prod) return;
@@ -889,16 +1170,18 @@
             prodPrice.value = prod.precio;
             prodDescription.value = prod.descripcion;
             prodEstado.value = prod.activo ? 'activo' : 'inactivo';
+            prodCategoria.value = prod.categoria || '';
             if(prod.imagenBase64) imagePreview.innerHTML = `<img src="${prod.imagenBase64}" style="max-width:100px; border-radius:16px;"><button type="button" id="clearImgBtn" style="background:gray;">X</button>`;
             else imagePreview.innerHTML = '';
-            document.getElementById('clearImgBtn')?.addEventListener('click', () => { prod.imagenBase64 = null; imagePreview.innerHTML = ''; showMessage("Imagen eliminada (guarda cambios)"); });
+            const clearBtn = document.getElementById('clearImgBtn');
+            if (clearBtn) clearBtn.onclick = () => { prod.imagenBase64 = null; imagePreview.innerHTML = ''; showMessage("Imagen eliminada (guarda cambios)"); };
         }
-
         function saveProductAdmin() {
             const nombre = prodName.value.trim();
             const precio = parseFloat(prodPrice.value);
             const desc = prodDescription.value.trim();
             const activo = prodEstado.value === 'activo';
+            const categoria = prodCategoria.value;
             if(!nombre || isNaN(precio) || !desc) { showMessage("Completa todos los campos", true); return; }
             const file = prodImage.files[0];
             const save = (b64) => {
@@ -910,15 +1193,15 @@
                         productos[idx].precio = precio;
                         productos[idx].descripcion = desc;
                         productos[idx].activo = activo;
+                        productos[idx].categoria = categoria || null;
                         if(b64) productos[idx].imagenBase64 = b64;
                     }
                 } else {
-                    productos.push({ id: Date.now(), nombre, precio, descripcion: desc, activo: activo, imagenBase64: b64 || null });
+                    productos.push({ id: Date.now(), nombre, precio, descripcion: desc, activo: activo, categoria: categoria || null, imagenBase64: b64 || null });
                 }
-                saveProducts();
+                persistAll();
                 resetAdminForm();
-                renderAdminProductList();
-                showMessage("Producto guardado");
+                showMessage("Producto guardado localmente. Recuerda exportar a JSON para subir cambios.");
             };
             if(file) {
                 if(file.size > 2*1024*1024) { showMessage("Imagen >2MB", true); return; }
@@ -927,7 +1210,6 @@
                 reader.readAsDataURL(file);
             } else save(null);
         }
-
         function resetAdminForm() {
             editId.value = '';
             prodName.value = '';
@@ -936,10 +1218,10 @@
             prodImage.value = '';
             imagePreview.innerHTML = '';
             prodEstado.value = 'activo';
+            if(prodCategoria) prodCategoria.value = '';
         }
-
         function exportDataToJSON() {
-            const exportData = { productos, config: { whatsappNumber: config.whatsappNumber }, version: "1.1", lastExport: new Date().toISOString() };
+            const exportData = { productos, categorias, config: { whatsappNumber: config.whatsappNumber }, version: "1.2", lastExport: new Date().toISOString() };
             const dataStr = JSON.stringify(exportData, null, 2);
             const blob = new Blob([dataStr], {type: "application/json"});
             const url = URL.createObjectURL(blob);
@@ -948,9 +1230,8 @@
             a.download = "modafit_data.json";
             a.click();
             URL.revokeObjectURL(url);
-            showMessage("📁 Archivo JSON exportado con estados activo/inactivo");
+            showMessage("📁 Archivo JSON exportado con categorías. Súbelo a tu GitHub.");
         }
-
         function importFromJSON(file) {
             const reader = new FileReader();
             reader.onload = e => {
@@ -958,30 +1239,29 @@
                     const imported = JSON.parse(e.target.result);
                     if(imported.productos && Array.isArray(imported.productos)) {
                         productos = imported.productos;
-                        saveProducts();
-                        renderAdminProductList();
-                        renderProductos();
+                        if(imported.categorias && Array.isArray(imported.categorias)) categorias = imported.categorias;
+                        else {
+                            const catsUnicas = [...new Set(productos.map(p => p.categoria).filter(c => c && c.trim() !== ""))];
+                            categorias = catsUnicas;
+                        }
+                        persistAll();
                         if(imported.config && imported.config.whatsappNumber) {
                             config.whatsappNumber = imported.config.whatsappNumber;
-                            saveConfig();
+                            saveConfigToLocal();
                             if(whatsappNumberConfig) whatsappNumberConfig.value = config.whatsappNumber;
                         }
-                        showMessage("Importación exitosa");
+                        showMessage("Importación exitosa desde archivo local");
                     } else throw new Error();
                 } catch(err) { showMessage("JSON inválido", true); }
             };
             reader.readAsText(file);
         }
-
-        function saveWhatsappConfig() { config.whatsappNumber = whatsappNumberConfig.value.trim(); saveConfig(); showMessage("WhatsApp actualizado"); }
+        function saveWhatsappConfig() { config.whatsappNumber = whatsappNumberConfig.value.trim(); saveConfigToLocal(); showMessage("WhatsApp actualizado"); }
         function changeAdminPassword() { const newP = newAdminPass.value.trim(); if(newP.length<4) { showMessage("Mínimo 4 caracteres", true); return; } adminPassword = newP; localStorage.setItem(STORAGE_ADMIN_PASS, adminPassword); showMessage("Contraseña cambiada"); newAdminPass.value = ''; }
-        function saveRemoteUrlSetting() { saveRemoteUrl(); showMessage("URL remota guardada"); fetchRemoteDataAndApply(true); }
+        function saveRemoteUrlSetting() { const newUrl = remoteJsonUrlInput.value.trim(); localStorage.setItem(STORAGE_REMOTE_URL, newUrl); remoteJsonUrl = newUrl; showMessage("URL remota guardada"); }
 
-        // Event listeners: abrir carrito desde header o botón flotante
-        function openCart() {
-            renderCartModal();
-            cartModal.style.display = 'flex';
-        }
+        // Eventos generales
+        function openCart() { renderCartModal(); cartModal.style.display = 'flex'; }
         cartIconHeader.addEventListener('click', openCart);
         floatingCartBtn.addEventListener('click', openCart);
         closeCartBtn.addEventListener('click', () => cartModal.style.display = 'none');
@@ -998,16 +1278,36 @@
         exportDataBtn.addEventListener('click', exportDataToJSON);
         importDataBtn.addEventListener('click', () => importFileInput.click());
         importFileInput.addEventListener('change', (e) => { if(e.target.files[0]) importFromJSON(e.target.files[0]); e.target.value = ''; });
-        fetchRemoteDataBtn.addEventListener('click', () => fetchRemoteDataAndApply(true));
+        fetchRemoteDataBtn.addEventListener('click', () => loadProductsFromRemoteJson(true, true));
         if(remoteJsonUrlInput) remoteJsonUrlInput.addEventListener('change', saveRemoteUrlSetting);
+        if(addCategoriaBtn) addCategoriaBtn.addEventListener('click', agregarCategoria);
 
         function escapeHtml(str) { return String(str).replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
 
-        loadInitialData().then(() => {
-            renderProductos();
+        // Inicialización
+        async function init() {
+            const storedConfig = localStorage.getItem(STORAGE_CONFIG);
+            if (storedConfig) config = JSON.parse(storedConfig);
+            else saveConfigToLocal();
+            if (whatsappNumberConfig) whatsappNumberConfig.value = config.whatsappNumber;
+            const storedPass = localStorage.getItem(STORAGE_ADMIN_PASS);
+            if (storedPass) adminPassword = storedPass;
+            else localStorage.setItem(STORAGE_ADMIN_PASS, adminPassword);
+            const storedCart = localStorage.getItem(STORAGE_CART);
+            if (storedCart) cart = JSON.parse(storedCart);
+            else cart = [];
+            updateCartUI();
+
+            const savedRemoteUrl = localStorage.getItem(STORAGE_REMOTE_URL);
+            if (savedRemoteUrl) remoteJsonUrl = savedRemoteUrl;
+            if (remoteJsonUrlInput) remoteJsonUrlInput.value = remoteJsonUrl;
+
+            await loadProductsFromRemoteJson(true, true);
+            construirBarraCategorias();
             checkRoute();
             window.addEventListener('hashchange', checkRoute);
-        });
+        }
+        init();
     </script>
 </body>
 </html>
